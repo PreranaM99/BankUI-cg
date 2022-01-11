@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>MyBank</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -14,7 +13,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"><span style="color: white;"> CG-Bank</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -44,10 +43,24 @@
           </div>
         </li>
       </ul>
-      <form class="d-flex">
+       
+       <%
+        String username = (String)session.getAttribute("username"); 
          
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
-      </form>
+         if(username == null){
+        	%>
+        	<a class="btn btn-info my-2 my-sm-0" href="${pageContext.request.contextPath }/login">LOGIN</a>
+        	 
+        <% 	 
+        }else{
+        	%>
+        	<span style="font-family: monospace; color: white;font-weight:italic; font-size:x-large; ">Welcome <%=username %>, </span> 
+        	&nbsp;&nbsp;&nbsp;&nbsp; <a class="btn btn-warning my-2 my-sm-0" href="${pageContext.request.contextPath }/logout">LOGOUT</a>
+        	<%
+        }
+       %>  
+        
+      
     </div>
   </div>
 </nav>
