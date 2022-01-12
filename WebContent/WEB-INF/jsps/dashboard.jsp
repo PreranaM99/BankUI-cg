@@ -40,7 +40,7 @@ a:hover {
 							<div class="card-body">
 								<h4 class="card-title">Money Transfer</h4>
 								<p class="card-text">Transfer the amount from one account to another. <br />
-								Max limit allowed: 50000</p>
+								Max limit allowed: 49,999.00</p>
 							</div>
 						</div>
 					</a>

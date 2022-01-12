@@ -60,6 +60,7 @@ public class AccountOpenController {
 			ResponseEntity<UserInfo> entity = restTemplate.exchange(url, HttpMethod.GET, request, UserInfo.class);
 			UserInfo u = entity.getBody();
 			session.setAttribute("username", u.getUsername());//jsessionid
+			session.setAttribute("password", user.getPassword()); //plain pass
 			model.addAttribute("user", u.getUsername());
 			return "dashboard";
 		}
