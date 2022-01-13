@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bankui.beans.Account;
 import com.bankui.beans.Deposit;
+import com.bankui.beans.Help;
 import com.bankui.beans.Transfer;
 
 @Controller
@@ -22,6 +23,9 @@ public class DashboardController {
 	
 	@Autowired
 	private Account account;
+	
+	@Autowired
+	private Help help;
 	
 	
 	@RequestMapping("/dashboard")
@@ -61,6 +65,7 @@ public class DashboardController {
 
 	@RequestMapping("/help")
 	public String showHelpScreen(Model model) {
+		model.addAttribute("help",help);
 		return path+"help";
 	}
 }

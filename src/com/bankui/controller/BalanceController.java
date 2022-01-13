@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.bankui.beans.Account;
@@ -21,7 +22,7 @@ public class BalanceController {
 	private Account account;
 	
 	@RequestMapping("/process-balance")
-	public String processBalance(@ModelAttribute Account account, HttpSession session, Model model) {
+	public String processBalance(@ModelAttribute Account account, HttpSession session, Model model, @RequestParam("balance") double balance) {
 
         //connect to the API
         RestTemplate restTemplate= new RestTemplate(); 
@@ -40,7 +41,7 @@ public class BalanceController {
 		try {
 			ResponseEntity<Account> entity = restTemplate.exchange(url, HttpMethod.GET, request, Account.class);
 			Account account1 = entity.getBody();
-			model.addAttribute("balance", account1);
+			model.addAttribute("balance", account);
 			return "dashboard/balance";
 		}
 		catch(Exception e) {
